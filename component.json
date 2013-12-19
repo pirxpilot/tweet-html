@@ -1,0 +1,14 @@
+{
+  "name": "tweet-html",
+  "repo": "code42day/tweet-html",
+  "description": "reparse tweets returned by twitter API to HTML",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
