@@ -1,5 +1,4 @@
 var tweet2html = require('..');
-var tweets = require('./tweets.json').tweets;
 
 /* global describe, it */
 
@@ -11,6 +10,7 @@ var opts = {
 describe('tweet2html', function() {
 
   it('should parse urls and hashtags', function() {
+    var tweet = require('./hashtags').tweets[0];
     var html = [
       '<a href="https://twitter.com/KillingtonMtn/status/412708201784569856" target="_blank" class="date">',
         '3 days ago',
@@ -22,11 +22,12 @@ describe('tweet2html', function() {
       '</div>'
     ].join('');
 
-    tweet2html(tweets[2], 'KillingtonMtn', opts).should.eql(html);
+    tweet2html(tweet, 'KillingtonMtn', opts).should.eql(html);
   });
 
 
-  it('should parse urls', function() {
+  it('should parse user mentions', function() {
+    var tweet = require('./mentions').tweets[0];
     var html = [
       '<a href="https://twitter.com/Alta/status/413730533345337344" target="_blank" class="date">',
         '3 days ago</a>',
@@ -38,11 +39,12 @@ describe('tweet2html', function() {
       '<a href="http://ow.ly/i/44H6o" target="_blank">ow.ly/i/44H6o</a>',
       '</div>'
     ].join('');
-    tweet2html(tweets[3], 'Alta', opts).should.eql(html);
+    tweet2html(tweet, 'Alta', opts).should.eql(html);
   });
 
 
   it('should parse photos', function() {
+    var tweet = require('./photos').tweets[0];
     var html = [
       '<a href="https://twitter.com/KillingtonMtn/status/413306301343465473" target="_blank" class="date">',
         '3 days ago',
@@ -55,10 +57,11 @@ describe('tweet2html', function() {
         '<img src="https://pbs.twimg.com/media/Bbxb5CuCAAAQ50E.jpg">',
       '</a>'
     ].join('');
-    tweet2html(tweets[0], 'KillingtonMtn', opts).should.eql(html);
+    tweet2html(tweet, 'KillingtonMtn', opts).should.eql(html);
   });
 
-  it('should parse instagrams', function() {
+  it('should parse vine', function() {
+    var tweet = require('./vine').tweets[0];
     var html = [
       '<a href="https://twitter.com/stratton/status/413684211087048704" target="_blank" class="date">',
         '3 days ago',
@@ -67,10 +70,11 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="https://vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
     ].join('');
-    tweet2html(tweets[4], 'stratton', opts).should.eql(html);
+    tweet2html(tweet, 'stratton', opts).should.eql(html);
   });
 
   it('should parse youtube videos', function() {
+    var tweet = require('./youtube').tweets[0];
     var html = [
       '<a href="https://twitter.com/stratton/status/413440560104345600" target="_blank" class="date">',
       '3 days ago</a>',
@@ -79,8 +83,25 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="http://www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
     ].join('');
-    tweet2html(tweets[5], 'stratton', opts).should.eql(html);
+    tweet2html(tweet, 'stratton', opts).should.eql(html);
   });
+
   it('should parse vimeo videos');
-  it('should parse vine videos');
+
+  it('should parse instagrams', function() {
+    var tweet = require('./instagram').tweets[0];
+    var html = [
+      '<a href="https://twitter.com/KillingtonMtn/status/413793572409061376" target="_blank" class="date">',
+        '3 days ago',
+      '</a>',
+      '<div class="text">',
+        '<a href="https://twitter.com/search/%23theBeast" target="_blank">#theBeast</a> ',
+        'is open for exploration! ',
+      '</div>',
+      '<a href="http://instagram.com/p/iHpOpZjH3F/" target="_blank" class="photo">',
+        '<img src="http://instagr.am/p/iHpOpZjH3F/media/?size=m">',
+      '</a>'
+    ].join('');
+    tweet2html(tweet, 'KillingtonMtn', opts).should.eql(html);
+  });
 });

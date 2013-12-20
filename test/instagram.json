@@ -1,0 +1,34 @@
+{
+  "user": "KillingtonMtn",
+  "tweets": [
+    {
+      "id_str": "413793572409061376",
+      "created_at": "Thu Dec 19 22:10:50 +0000 2013",
+      "text": "#theBeast is open for exploration! http://t.co/SbD1pcSukL",
+      "entities": {
+        "hashtags": [
+          {
+            "text": "theBeast",
+            "indices": [
+              0,
+              9
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/SbD1pcSukL",
+            "expanded_url": "http://instagram.com/p/iHpOpZjH3F/",
+            "display_url": "instagram.com/p/iHpOpZjH3F/",
+            "indices": [
+              35,
+              57
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    }
+  ]
+}

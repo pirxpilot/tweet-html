@@ -1,0 +1,26 @@
+{
+  "user": "KillingtonMtn",
+  "tweets": [
+    {
+      "id_str": "413440560104345600",
+      "created_at": "Wed Dec 18 22:48:05 +0000 2013",
+      "text": "There's still time to have breakfast with santa this Sat or Sun in the LDR from 10am - 2pm. 208-622-2800 for info. http://t.co/YCOGMja1c9",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/YCOGMja1c9",
+            "expanded_url": "http://youtu.be/j21KKhcf-5s",
+            "display_url": "youtu.be/j21KKhcf-5s",
+            "indices": [
+              115,
+              137
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    }
+  ]
+}
