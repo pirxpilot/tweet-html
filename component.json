@@ -4,7 +4,10 @@
   "description": "reparse tweets returned by twitter API to HTML",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "code42day/el": "0.1.0",
+    "component/moment": "2.0.0"
+  },
   "development": {},
   "license": "MIT",
   "main": "index.js",

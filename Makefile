@@ -1,15 +1,20 @@
-all: lint build
+NODE_BIN ?= ./node_modules/.bin
+
+all: lint test build
 
 lint:
-	jshint index.js
+	$(NODE_BIN)/jshint index.js
 
 build: components index.js
-	@component build --dev
+	@$(NODE_BIN)/component build --dev
 
 components: component.json
-	@component install --dev
+	@$(NODE_BIN)/component install --dev
 
 clean:
 	rm -fr build components
 
-.PHONY: clean lint all
+test:
+	$(NODE_BIN)/mocha --require should
+
+.PHONY: clean lint test all

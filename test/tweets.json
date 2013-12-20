@@ -1,0 +1,235 @@
+{
+  "user": "KillingtonMtn",
+  "tweets": [
+    {
+      "id_str": "413306301343465473",
+      "created_at": "Wed Dec 18 13:54:35 +0000 2013",
+      "text": "Bear Mountain OPENS this afternoon. Check the conditions page for the latest information. http://t.co/t5t3LLZse2 http://t.co/TZPFgWrlqI",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/t5t3LLZse2",
+            "expanded_url": "http://www.killington.com/conditions",
+            "display_url": "killington.com/conditions",
+            "indices": [
+              90,
+              112
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "media": [
+          {
+            "id": 413306301351854100,
+            "id_str": "413306301351854080",
+            "indices": [
+              113,
+              135
+            ],
+            "media_url": "http://pbs.twimg.com/media/Bbxb5CuCAAAQ50E.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/Bbxb5CuCAAAQ50E.jpg",
+            "url": "http://t.co/TZPFgWrlqI",
+            "display_url": "pic.twitter.com/TZPFgWrlqI",
+            "expanded_url": "http://twitter.com/KillingtonMtn/status/413306301343465473/photo/1",
+            "type": "photo",
+            "sizes": {
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 762,
+                "h": 510,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 402,
+                "resize": "fit"
+              },
+              "small": {
+                "w": 340,
+                "h": 228,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id_str": "412956698274299905",
+      "created_at": "Tue Dec 17 14:45:24 +0000 2013",
+      "text": "TEST FEST - if it is worth skiing or riding it is here for you to take a test ride.  http://t.co/VIOLd87k9S http://t.co/i79Orl1GQi",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/VIOLd87k9S",
+            "expanded_url": "http://www.killington.com/winter/events/calendar/1926956553",
+            "display_url": "killington.com/winter/events/…",
+            "indices": [
+              85,
+              107
+            ]
+          }
+        ],
+        "user_mentions": [],
+        "media": [
+          {
+            "id": 412956698278494200,
+            "id_str": "412956698278494209",
+            "indices": [
+              108,
+              130
+            ],
+            "media_url": "http://pbs.twimg.com/media/Bbsd7dyCAAExtrF.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/Bbsd7dyCAAExtrF.jpg",
+            "url": "http://t.co/i79Orl1GQi",
+            "display_url": "pic.twitter.com/i79Orl1GQi",
+            "expanded_url": "http://twitter.com/KillingtonMtn/status/412956698274299905/photo/1",
+            "type": "photo",
+            "sizes": {
+              "small": {
+                "w": 340,
+                "h": 227,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 1024,
+                "h": 682,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 400,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id_str": "412708201784569856",
+      "created_at": "Mon Dec 16 22:17:57 +0000 2013",
+      "text": "The Gift of Life Marathon Blood Drive is gunning for the national record tomorrow - help out if you can! http://t.co/pJCM3XIm8W #vermont",
+      "entities": {
+        "hashtags": [
+          {
+            "text": "vermont",
+            "indices": [
+              128,
+              136
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/pJCM3XIm8W",
+            "expanded_url": "http://giftoflifemarathon.com/",
+            "display_url": "giftoflifemarathon.com",
+            "indices": [
+              105,
+              127
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    },
+    {
+      "id_str": "413730533345337344",
+      "created_at": "Thu Dec 19 18:00:20 +0000 2013",
+      "text": "Last chance to purchase your @CollectivePass and make this the best season yet! http://t.co/tAHq52jA40 http://t.co/dYlkB3nuGe",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/tAHq52jA40",
+            "expanded_url": "http://ow.ly/rVl4M",
+            "display_url": "ow.ly/rVl4M",
+            "indices": [
+              80,
+              102
+            ]
+          },
+          {
+            "url": "http://t.co/dYlkB3nuGe",
+            "expanded_url": "http://ow.ly/i/44H6o",
+            "display_url": "ow.ly/i/44H6o",
+            "indices": [
+              103,
+              125
+            ]
+          }
+        ],
+        "user_mentions": [
+          {
+            "screen_name": "CollectivePass",
+            "name": "Mountain Collective",
+            "id": 741553663,
+            "id_str": "741553663",
+            "indices": [
+              29,
+              44
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id_str": "413684211087048704",
+      "created_at": "Thu Dec 19 14:56:16 +0000 2013",
+      "text": "Look for the East Byrneside boarder cross course this weekend! https://t.co/zbGXyOjmlr",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "https://t.co/zbGXyOjmlr",
+            "expanded_url": "https://vine.co/v/h0UBzVLzA5O",
+            "display_url": "vine.co/v/h0UBzVLzA5O",
+            "indices": [
+              63,
+              86
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    },
+    {
+      "id_str": "413440560104345600",
+      "created_at": "Wed Dec 18 22:48:05 +0000 2013",
+      "text": "There's still time to have breakfast with santa this Sat or Sun in the LDR from 10am - 2pm. 208-622-2800 for info. http://t.co/YCOGMja1c9",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/YCOGMja1c9",
+            "expanded_url": "http://youtu.be/j21KKhcf-5s",
+            "display_url": "youtu.be/j21KKhcf-5s",
+            "indices": [
+              115,
+              137
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    }
+  ]
+}

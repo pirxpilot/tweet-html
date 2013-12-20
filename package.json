@@ -1,0 +1,40 @@
+{
+  "name": "tweet-html",
+  "version": "0.0.1",
+  "description": "reparse tweets returned by twitter API to HTML",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code42day/tweet-html.git"
+  },
+  "keywords": [
+    "twitter",
+    "parser",
+    "html",
+    "vimeo",
+    "youtube",
+    "instagram"
+  ],
+  "author": "Damian Krzeminski <pirxpilot@code42day.com>",
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/code42day/tweet-html/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1",
+    "should": "~2",
+    "jshint": "~2",
+    "component": "~0"
+  },
+  "dependencies": {
+    "moment": "~2",
+    "el-component": "~0"
+  }
+}
