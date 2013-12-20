@@ -1,4 +1,6 @@
-
+[![Build Status](https://secure.travis-ci.org/code42day/tweet-html.png)](http://travis-ci.org/code42day/tweet-html)
+[![Dependency Status](https://gemnasium.com/code42day/tweet-html.png)](https://gemnasium.com/code42day/tweet-html)
+[![NPM version](https://badge.fury.io/js/tweet-html.png)](http://badge.fury.io/js/tweet-html)
 # tweet-html
 
   reparse tweets returned by twitter API to HTML
