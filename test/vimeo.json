@@ -1,0 +1,41 @@
+{
+  "user": "Telluride",
+  "tweets": [
+    {
+      "id_str": "414158499073908737",
+      "created_at": "Fri Dec 20 22:20:55 +0000 2013",
+      "text": "It's going to be a powder day for the Revelation Bowl opening tomorrow. #Telluride #PowderAlert http://t.co/g34fa4ijPy",
+      "entities": {
+        "hashtags": [
+          {
+            "text": "Telluride",
+            "indices": [
+              72,
+              82
+            ]
+          },
+          {
+            "text": "PowderAlert",
+            "indices": [
+              83,
+              95
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/g34fa4ijPy",
+            "expanded_url": "http://vimeo.com/58833057",
+            "display_url": "vimeo.com/58833057",
+            "indices": [
+              96,
+              118
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
+    }
+  ]
+}

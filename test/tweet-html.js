@@ -86,7 +86,21 @@ describe('tweet2html', function() {
     tweet2html(tweet, 'stratton', opts).should.eql(html);
   });
 
-  it('should parse vimeo videos');
+  it('should parse vimeo videos', function() {
+    var tweet = require('./vimeo').tweets[0];
+    var html = [
+      '<a href="https://twitter.com/telluride/status/414158499073908737" target="_blank" class="date">',
+      '3 days ago',
+      '</a>',
+      '<div class="text">',
+        'It\'s going to be a powder day for the Revelation Bowl opening tomorrow. ',
+        '<a href="https://twitter.com/search/%23Telluride" target="_blank">#Telluride</a> ',
+        '<a href="https://twitter.com/search/%23PowderAlert" target="_blank">#PowderAlert</a> ',
+      '</div>',
+      '<iframe src="http://player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
+    ].join('');
+    tweet2html(tweet, 'telluride', opts).should.eql(html);
+  });
 
   it('should parse instagrams', function() {
     var tweet = require('./instagram').tweets[0];
