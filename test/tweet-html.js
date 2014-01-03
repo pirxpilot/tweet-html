@@ -86,6 +86,20 @@ describe('tweet2html', function() {
     tweet2html(tweet, 'stratton', opts).should.eql(html);
   });
 
+  it('should parse youtube videos with extra params', function() {
+    var tweet = require('./youtube').tweets[1];
+    var html = [
+      '<a href="https://twitter.com/stratton/status/418773517224521729" target="_blank" class="date">',
+      '3 days ago',
+      '</a>',
+      '<div class="text">',
+      'Less Talk more STASH. The Stash opens this Saturday.\n',
+      '</div>',
+      '<iframe src="http://www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
+    ].join('');
+    tweet2html(tweet, 'stratton', opts).should.eql(html);
+  });
+
   it('should parse vimeo videos', function() {
     var tweet = require('./vimeo').tweets[0];
     var html = [
