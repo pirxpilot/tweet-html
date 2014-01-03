@@ -21,6 +21,27 @@
         ],
         "user_mentions": []
       }
+    },
+    {
+      "id_str": "418773517224521729",
+      "created_at": "Thu Jan 02 15:59:21 +0000 2014",
+      "text": "Less Talk more STASH. The Stash opens this Saturday.\nhttp://t.co/S7TFp3mUUp",
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/S7TFp3mUUp",
+            "expanded_url": "http://www.youtube.com/watch?v=Evv5DXz2HH4&feature=share&list=PLFZYu1vpBF2jhdArNs-5SkTfUSFimbelW",
+            "display_url": "youtube.com/watch?v=Evv5DX…",
+            "indices": [
+              53,
+              75
+            ]
+          }
+        ],
+        "user_mentions": []
+      }
     }
   ]
 }

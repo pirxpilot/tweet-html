@@ -115,7 +115,7 @@ var urlPreParsers = [
     }
   }, {
     type: 'youtube',
-    regex: /https?:\/\/(?:youtu.be\/|(?:m|www).youtube.com\/watch\?v=)(\S+)$/,
+    regex: /https?:\/\/(?:youtu.be\/|(?:m|www).youtube.com\/watch\?v=)([^\s&]+)/,
     toMediaUrl: function(match) {
       return 'http://www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
     }
