@@ -1,12 +1,5 @@
-var moment = require('moment');
-var el;
-
-if ('undefined' == typeof window) {
-  el = require('el-component');
-} else {
-  el = require('el');
-}
-
+var ago = require('ago');
+var el = require('el');
 
 module.exports = tweet2html;
 
@@ -16,7 +9,8 @@ function splice(str, start, end, replacement) {
 
 
 function formatDate(created_at) {
-  return moment(created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').fromNow();
+  // Date format: ddd MMM DD HH:mm:ss ZZ YYYY
+  return ago(new Date(created_at));
 }
 
 function adjustText(tweet) {
