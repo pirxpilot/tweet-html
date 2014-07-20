@@ -15,6 +15,6 @@ clean:
 	rm -fr build components
 
 test: build
-	@$(NODE_BIN)/component test browser
+	@$(NODE_BIN)/component test sauce
 
 .PHONY: clean lint test build all
