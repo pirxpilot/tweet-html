@@ -2,7 +2,7 @@
   "name": "tweet-html",
   "repo": "code42day/tweet-html",
   "description": "reparse tweets returned by twitter API to HTML",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "keywords": [],
   "dependencies": {
     "code42day/el": "*",

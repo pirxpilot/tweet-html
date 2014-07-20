@@ -1,6 +1,6 @@
 {
   "name": "tweet-html",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "reparse tweets returned by twitter API to HTML",
   "main": "index.js",
   "directories": {
