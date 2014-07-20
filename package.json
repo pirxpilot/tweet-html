@@ -28,13 +28,9 @@
     "url": "https://github.com/code42day/tweet-html/issues"
   },
   "devDependencies": {
-    "mocha": "~1",
-    "should": "~2",
+    "component": "~0",
+    "component-test": "~0",
     "jshint": "~2",
-    "component": "~0"
-  },
-  "dependencies": {
-    "moment": "~2",
-    "el-component": "~0"
+    "mocha": "~1"
   }
 }

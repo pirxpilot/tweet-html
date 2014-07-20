@@ -1,6 +1,6 @@
 NODE_BIN ?= ./node_modules/.bin
 
-all: lint test build
+all: lint build
 
 lint:
 	$(NODE_BIN)/jshint index.js
@@ -14,7 +14,7 @@ components: component.json
 clean:
 	rm -fr build components
 
-test:
-	$(NODE_BIN)/mocha --require should
+test: build
+	@$(NODE_BIN)/component test sauce
 
-.PHONY: clean lint test all
+.PHONY: clean lint test build all

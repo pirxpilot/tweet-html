@@ -5,10 +5,13 @@
   "version": "0.1.1",
   "keywords": [],
   "dependencies": {
-    "code42day/el": "0.1.1",
-    "component/moment": "2.0.0"
+    "code42day/el": "*",
+    "yields/ago": "*"
   },
-  "development": {},
+  "development": {
+    "timoxley/assert": "*",
+    "yields/xhr": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [
