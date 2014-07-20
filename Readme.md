@@ -1,6 +1,6 @@
-[![Build Status](https://secure.travis-ci.org/code42day/tweet-html.png)](http://travis-ci.org/code42day/tweet-html)
-[![Dependency Status](https://gemnasium.com/code42day/tweet-html.png)](https://gemnasium.com/code42day/tweet-html)
-[![NPM version](https://badge.fury.io/js/tweet-html.png)](http://badge.fury.io/js/tweet-html)
+[![Build Status](https://img.shields.io/travis/code42day/tweet-html.svg)](http://travis-ci.org/code42day/tweet-html)
+[![Dependency Status](https://img.shields.io/gemnasium/code42day/tweet-html.svg)](https://gemnasium.com/code42day/tweet-html)
+[![NPM version](https://img.shields.io/npm/v/tweet-html.svg)](http://badge.fury.io/js/tweet-html)
 # tweet-html
 
   reparse tweets returned by twitter API to HTML
