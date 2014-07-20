@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "component": "~0",
+    "component-test": "~0",
     "jshint": "~2",
-    "mocha": "~1",
-    "should": "~2"
+    "mocha": "~1"
   }
 }

@@ -8,7 +8,10 @@
     "code42day/el": "*",
     "yields/ago": "*"
   },
-  "development": {},
+  "development": {
+    "timoxley/assert": "*",
+    "yields/xhr": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [
