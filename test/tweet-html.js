@@ -87,7 +87,7 @@ describe('tweet2html', function() {
       '</a>',
       '<div class="text">Look for the East Byrneside boarder cross course this weekend! ',
       '</div>',
-      '<iframe src="https://vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
+      '<iframe src="//vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
     ].join('');
     getJson('/vine.json', function(err, data) {
       assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
@@ -102,7 +102,7 @@ describe('tweet2html', function() {
       '<div class="text">There\'s still time to have breakfast with santa this Sat or Sun',
       ' in the LDR from 10am - 2pm. 208-622-2800 for info. ',
       '</div>',
-      '<iframe src="http://www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
+      '<iframe src="//www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
     ].join('');
     getJson('/youtube.json', function(err, data) {
       assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
@@ -118,7 +118,7 @@ describe('tweet2html', function() {
       '<div class="text">',
       'Less Talk more STASH. The Stash opens this Saturday.\n',
       '</div>',
-      '<iframe src="http://www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
+      '<iframe src="//www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
     ].join('');
     getJson('/youtube.json', function(err, data) {
       assert.equal(tweet2html(data.tweets[1], 'stratton', opts), html);
@@ -136,7 +136,7 @@ describe('tweet2html', function() {
         '<a href="https://twitter.com/search/%23Telluride" target="_blank">#Telluride</a> ',
         '<a href="https://twitter.com/search/%23PowderAlert" target="_blank">#PowderAlert</a> ',
       '</div>',
-      '<iframe src="http://player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
+      '<iframe src="//player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
     ].join('');
     getJson('/vimeo.json', function(err, data) {
       assert.equal(tweet2html(data.tweets[0], 'telluride', opts), html);
