@@ -1,4 +1,9 @@
 
+1.1.0 / 2014-10-07
+==================
+
+ * use protocol independent URLs where possible
+
 1.0.0 / 2014-07-20
 ==================
 
