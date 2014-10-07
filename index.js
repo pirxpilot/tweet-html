@@ -111,19 +111,19 @@ var urlPreParsers = [
     type: 'youtube',
     regex: /https?:\/\/(?:youtu.be\/|(?:m|www).youtube.com\/watch\?v=)([^\s&]+)/,
     toMediaUrl: function(match) {
-      return 'http://www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
+      return '//www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
     }
   }, {
     type: 'vimeo',
     regex: /https?:\/\/vimeo.com\/(\S+)$/,
     toMediaUrl: function(match) {
-      return 'http://player.vimeo.com/video/' + match[1];
+      return '//player.vimeo.com/video/' + match[1];
     }
  }, {
     type: 'vine',
     regex: /https?:\/\/vine.co\/v\/(\S+)$/,
     toMediaUrl: function(match) {
-      return 'https://vine.co/v/' + match[1] + '/embed/simple';
+      return '//vine.co/v/' + match[1] + '/embed/simple';
     }
   }
 ];
