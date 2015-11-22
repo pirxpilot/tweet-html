@@ -1,20 +1,29 @@
-NODE_BIN ?= ./node_modules/.bin
+PROJECT=tweet-html
 
-all: lint build
+all: check compile
+
+check: lint
 
 lint:
-	$(NODE_BIN)/jshint index.js
+	jshint index.js test
 
-build: components index.js
-	@$(NODE_BIN)/component build --dev
+compile: build/build.js
 
-components: component.json
-	@$(NODE_BIN)/component install --dev
+build:
+	mkdir -p $@
+
+build/build.js: node_modules index.js | build
+	browserify --require ./index.js:$(PROJECT) --outfile $@
+
+.DELETE_ON_ERROR: build/build.js
+
+node_modules: package.json
+	npm install
 
 clean:
-	rm -fr build components
+	rm -fr build
 
-test: build
-	@$(NODE_BIN)/component test sauce
+distclean: clean
+	rm -fr node_modules
 
-.PHONY: clean lint test build all
+.PHONY: clean distclean compile lint check all

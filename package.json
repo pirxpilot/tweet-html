@@ -3,9 +3,6 @@
   "version": "1.1.0",
   "description": "reparse tweets returned by twitter API to HTML",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "make test"
   },
@@ -28,9 +25,16 @@
     "url": "https://github.com/code42day/tweet-html/issues"
   },
   "devDependencies": {
-    "component": "~0",
-    "component-test": "~0",
     "jshint": "~2",
     "mocha": "~1"
+  },
+  "dependencies": {
+    "el-component": "^1.0.0",
+    "yields-ago": "~0"
+  },
+  "browser": {
+    "ago": "yields-ago",
+    "el": "el-component"
   }
+
 }

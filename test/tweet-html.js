@@ -12,14 +12,14 @@ function getJson(url, fn) {
     if (req.readyState === 4) {
       fn(null, JSON.parse(req.responseText));
     }
-  }
+  };
   req.send(null);
 }
 
 
 var opts = {
   formatDate: function() { return '3 days ago'; }
-}
+};
 
 describe('tweet2html', function() {
 
