@@ -1,10 +1,6 @@
+sudo: false
 language: node_js
 node_js:
-  - 0.1
+  - 4
+  - stable
 
-env:
-  matrix:
-    - BROWSER="firefox"
-    - BROWSER="chrome"
-  global:
-    secure: Z/kGFVc0P5FYp6QL+KIi+o/WFcgFqDrg4enrXGBc8L/tB0jxdnAgoOql4Q+h1lyk2mqHa05yF/LzNHhgDywh7Ej3qU1QyRkN+7l3wDXA9CBwSX/tVFoZR2ACqafst8qMu+RDwv81kw4wIdVHPB5GoBVXJU9qYinQaqq10JLwWdg=
