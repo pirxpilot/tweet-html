@@ -1,29 +1,16 @@
-var tweet2html = require('tweet-html');
+var tweet2html = require('..');
 
 /* global describe, it */
 
 var assert = require('assert');
-var xhr = require('xhr');
-
-function getJson(url, fn) {
-  var req = xhr();
-  req.open('GET', url, false);
-  req.onreadystatechange = function() {
-    if (req.readyState === 4) {
-      fn(null, JSON.parse(req.responseText));
-    }
-  }
-  req.send(null);
-}
-
 
 var opts = {
   formatDate: function() { return '3 days ago'; }
-}
+};
 
 describe('tweet2html', function() {
 
-  it('should parse urls and hashtags', function(done) {
+  it('should parse urls and hashtags', function() {
     var html = [
       '<a href="https://twitter.com/KillingtonMtn/status/412708201784569856" target="_blank" class="date">',
         '3 days ago',
@@ -35,14 +22,12 @@ describe('tweet2html', function() {
       '</div>'
     ].join('');
 
-    getJson('/hashtags.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
-      done(err);
-    });
+    var data = require('./hashtags.json');
+    assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
   });
 
 
-  it('should parse user mentions', function(done) {
+  it('should parse user mentions', function() {
     var html = [
       '<a href="https://twitter.com/Alta/status/413730533345337344" target="_blank" class="date">',
         '3 days ago</a>',
@@ -54,14 +39,12 @@ describe('tweet2html', function() {
       '<a href="http://ow.ly/i/44H6o" target="_blank">ow.ly/i/44H6o</a>',
       '</div>'
     ].join('');
-    getJson('/mentions.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'Alta', opts), html);
-      done(err);
-    });
+    var data = require('./mentions.json');
+    assert.equal(tweet2html(data.tweets[0], 'Alta', opts), html);
   });
 
 
-  it('should parse photos', function(done) {
+  it('should parse photos', function() {
     var html = [
       '<a href="https://twitter.com/KillingtonMtn/status/413306301343465473" target="_blank" class="date">',
         '3 days ago',
@@ -74,13 +57,11 @@ describe('tweet2html', function() {
         '<img src="https://pbs.twimg.com/media/Bbxb5CuCAAAQ50E.jpg">',
       '</a>'
     ].join('');
-    getJson('/photos.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
-      done(err);
-    });
+    var data = require('./photos.json');
+    assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
   });
 
-  it('should parse vine', function(done) {
+  it('should parse vine', function() {
     var html = [
       '<a href="https://twitter.com/stratton/status/413684211087048704" target="_blank" class="date">',
         '3 days ago',
@@ -89,13 +70,11 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="//vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
     ].join('');
-    getJson('/vine.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
-      done(err);
-    });
+    var data = require('./vine.json');
+    assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
   });
 
-  it('should parse youtube videos', function(done) {
+  it('should parse youtube videos', function() {
     var html = [
       '<a href="https://twitter.com/stratton/status/413440560104345600" target="_blank" class="date">',
       '3 days ago</a>',
@@ -104,13 +83,12 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="//www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
     ].join('');
-    getJson('/youtube.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
-      done(err);
-    });
+    var data = require('./youtube.json');
+
+    assert.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
   });
 
-  it('should parse youtube videos with extra params', function(done) {
+  it('should parse youtube videos with extra params', function() {
     var html = [
       '<a href="https://twitter.com/stratton/status/418773517224521729" target="_blank" class="date">',
       '3 days ago',
@@ -120,13 +98,11 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="//www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
     ].join('');
-    getJson('/youtube.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[1], 'stratton', opts), html);
-      done(err);
-    });
+    var data = require('./youtube.json');
+    assert.equal(tweet2html(data.tweets[1], 'stratton', opts), html);
   });
 
-  it('should parse vimeo videos', function(done) {
+  it('should parse vimeo videos', function() {
     var html = [
       '<a href="https://twitter.com/telluride/status/414158499073908737" target="_blank" class="date">',
       '3 days ago',
@@ -138,13 +114,11 @@ describe('tweet2html', function() {
       '</div>',
       '<iframe src="//player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
     ].join('');
-    getJson('/vimeo.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'telluride', opts), html);
-      done(err);
-    });
+    var data = require('./vimeo.json');
+    assert.equal(tweet2html(data.tweets[0], 'telluride', opts), html);
   });
 
-  it('should parse instagrams', function(done) {
+  it('should parse instagrams', function() {
     var html = [
       '<a href="https://twitter.com/KillingtonMtn/status/413793572409061376" target="_blank" class="date">',
         '3 days ago',
@@ -157,9 +131,7 @@ describe('tweet2html', function() {
         '<img src="http://instagr.am/p/iHpOpZjH3F/media/?size=m">',
       '</a>'
     ].join('');
-    getJson('/instagram.json', function(err, data) {
-      assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
-      done(err);
-    });
+    var data = require('./instagram.json');
+    assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
   });
 });
