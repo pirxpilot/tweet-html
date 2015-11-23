@@ -1,4 +1,9 @@
 
+1.1.1 / 2015-11-22
+==================
+
+ * switch to browserify for build and mochify for test
+
 1.1.0 / 2014-10-07
 ==================
 
