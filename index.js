@@ -154,11 +154,12 @@ function preParseUrl(entities, preParser) {
 // interesting things about the tweet
 // item.created_at
 // item.text - tweet text
+// item.full_text - tweet text for an untruncated tweet
 // item.entities - hashtags, urls, user_mentions, media (type: photo)
 function parseTweet(tweet, username, opts) {
   var parsed = {
     href: 'https://twitter.com/' + username + '/status/' + tweet.id_str,
-    text: tweet.text,
+    text: tweet.full_text || tweet.text,
     date: opts.formatDate(tweet.created_at),
     textAdjustment: []
   };

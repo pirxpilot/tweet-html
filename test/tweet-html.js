@@ -134,4 +134,21 @@ describe('tweet2html', function() {
     var data = require('./instagram.json');
     assert.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
   });
+
+  it('should parse extended tweet format', function() {
+    var html = [
+      '<a href="https://twitter.com/Furkot/status/793223177853931554" target="_blank" class="date">',
+        '3 days ago',
+      '</a>',
+      '<div class="text">',
+        'New feature: we support <a href="https://twitter.com/intent/user?user_id=15324722" target="_blank">@Garmin</a>',
+        ' CSV format for imports.\n',
+        'Which means you can now use CSV files from ',
+        '<a href="https://twitter.com/intent/user?user_id=515999124" target="_blank">@POI_Factory</a>\n',
+        '<a href="https://help.furkot.com/how-to/import.html" target="_blank">help.furkot.com/how-to/import.…</a>',
+      '</div>'
+    ].join('');
+    var data = require('./extended.json');
+    assert.equal(tweet2html(data, 'Furkot', opts), html);
+  });
 });
