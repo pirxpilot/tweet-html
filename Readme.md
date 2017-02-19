@@ -1,5 +1,5 @@
-[![Build Status](https://img.shields.io/travis/code42day/tweet-html.svg)](http://travis-ci.org/code42day/tweet-html)
-[![Dependency Status](https://img.shields.io/gemnasium/code42day/tweet-html.svg)](https://gemnasium.com/code42day/tweet-html)
+[![Build Status](https://img.shields.io/travis/pirxpilot/tweet-html.svg)](http://travis-ci.org/pirxpilot/tweet-html)
+[![Dependency Status](https://img.shields.io/gemnasium/pirxpilot/tweet-html.svg)](https://gemnasium.com/pirxpilot/tweet-html)
 [![NPM version](https://img.shields.io/npm/v/tweet-html.svg)](http://badge.fury.io/js/tweet-html)
 # tweet-html
 
@@ -7,11 +7,7 @@
 
 ## Installation
 
-For browser use install with [component(1)](http://component.io):
-
-    $ component install code42day/tweet-html
-
-For server side use install with [npm](http://npmjs.org):
+Install with [npm](http://npmjs.org):
 
     $ npm install tweet-html
 
