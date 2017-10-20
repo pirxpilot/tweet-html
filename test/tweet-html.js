@@ -171,4 +171,23 @@ describe('tweet2html', function() {
     var data = require('./emojis.json');
     assert.equal(tweet2html(data, 'Furkot', opts), html);
   });
+
+  it('should parse native video', function() {
+    var html = [
+      '<a href="https://twitter.com/bigskyresort/status/919977363235991552" target="_blank" class="date">',
+        '3 days ago',
+      '</a>',
+      '<div class="text">',
+        'The Big 5 is the best deal of the year! Save 20% on a 5 day lift ticket. ',
+        'Buy online today, quantities limited. ',
+        '<a href="http://bit.ly/2zs8Ayl" target="_blank">bit.ly/2zs8Ayl</a> ',
+      '</div>',
+      '<video controls="" poster="https://pbs.twimg.com/ext_tw_video_thumb/919976809772367872/pu/img/dad49vapKqgZHzWv.jpg">',
+        '<source src="https://video.twimg.com/ext_tw_video/919976809772367872/pu/vid/480x480/EUqOFoQjr_qg1cWJ.mp4" type="video/mp4">',
+        '<source src="https://video.twimg.com/ext_tw_video/919976809772367872/pu/pl/6doXgOTC0BLrjddT.m3u8" type="application/x-mpegURL">',
+      '</video>'
+    ].join('');
+    var data = require('./video.json');
+    assert.equal(tweet2html(data, 'bigskyresort', opts), html);
+  });
 });
