@@ -134,7 +134,7 @@ var entityParsers = {
 var urlPreParsers = [
   {
     type: 'photo',
-    regex: /https?:\/\/instagram.com\/p\/([^\s\/]+)\/?/,
+    regex: /https?:\/\/(?:www\.)?instagram.com\/p\/([^\s\/]+)\/?/,
     toMediaUrl: function(match) {
       return 'http://instagr.am/p/' + match[1] + '/media/?size=m';
     }
