@@ -1,4 +1,11 @@
 
+1.3.0 / 2017-10-20
+==================
+
+ * add support for native video
+ * translate emoji to SVG img
+ * fix text adjustment in cases when surrogate pairs are used in tweet
+
 1.2.1 / 2017-02-19
 ==================
 
