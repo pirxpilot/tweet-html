@@ -63,6 +63,9 @@ function parseEntityType(entities, parsed, type, convertFn) {
       if (opts.iframe) {
         parsed.iframe = opts.iframe;
       }
+      if (opts.video) {
+        parsed.video = opts.video;
+      }
       ta = createTextAdjustment(opts);
       parsed.textAdjustment.push(ta);
     }
@@ -75,19 +78,35 @@ var entityParsers = {
       indices: media.indices,
       text: ''
     };
-    if (media.type === 'photo') {
-      data.photo = {
-        url: media.expanded_url,
-        src: media.media_url_https
-      };
-      return data;
-    } else if (media.type === 'youtube' || media.type === 'vimeo' || media.type === 'vine') {
-      data.iframe = {
-        src: media.media_url_https,
-        service: 'video ' + media.type
-      };
-      return data;
+    switch (media.type) {
+      case 'photo':
+        data.photo = {
+          url: media.expanded_url,
+          src: media.media_url_https
+        };
+        break;
+      case 'youtube':
+      case 'vimeo':
+      case 'vine':
+        data.iframe = {
+          src: media.media_url_https,
+          service: 'video ' + media.type
+        };
+        break;
+      case 'video':
+      case 'animated_gif':
+        data.video = {
+          poster: media.media_url_https,
+          source: {}
+        };
+        media.video_info.variants.forEach(function(variant) {
+          data.video.source[variant.content_type] = variant.url;
+        });
+        break;
+      default:
+        data = undefined;
     }
+    return data;
   },
   hashtags: function(tag) {
     return {
@@ -111,7 +130,6 @@ var entityParsers = {
     };
   }
 };
-
 
 var urlPreParsers = [
   {
@@ -164,6 +182,27 @@ function preParseUrl(entities, preParser) {
   });
 }
 
+function handleExtendedEntities(tweet) {
+  if (!tweet.extended_entities) {
+    return;
+  }
+  if (!tweet.extended_entities.media) {
+    return;
+  }
+  var id2emedia = {};
+  // find all extended media that we can process
+  tweet.extended_entities.media.forEach(function(emedia) {
+    if (emedia.type === 'video' || emedia.type == 'animated_gif') {
+      id2emedia[emedia.id_str] = emedia;
+    }
+  });
+  // replace legacy media with extended version
+  tweet.entities.media = tweet.entities.media.map(function(media) {
+    return id2emedia[media.id_str] || media;
+  });
+  delete tweet.extended_entities;
+}
+
 // interesting things about the tweet
 // item.created_at
 // item.text - tweet text
@@ -176,6 +215,7 @@ function parseTweet(tweet, username, opts) {
     date: opts.formatDate(tweet.created_at),
     textAdjustment: []
   };
+  handleExtendedEntities(tweet);
   urlPreParsers.forEach(preParseUrl.bind(null, tweet.entities));
   Object.keys(entityParsers).forEach(function(type) {
     parseEntityType(tweet.entities, parsed, type, entityParsers[type]);
@@ -185,16 +225,30 @@ function parseTweet(tweet, username, opts) {
 }
 
 function htmlTweet(tweet) {
-  var img, content = [
+  var content = [
     el('a.date', tweet.date, { href: tweet.href, target: '_blank' }),
     el('.text', tweet.text)
   ];
   if (tweet.photo) {
-    img = el('img', { src: tweet.photo.src });
+    var img = el('img', { src: tweet.photo.src });
     content.push(el('a.photo', img, { href: tweet.photo.url,  target: '_blank' }));
   }
   if (tweet.iframe) {
     content.push(el('iframe', { src: tweet.iframe.src, 'class': tweet.iframe.service }));
+  }
+  if (tweet.video) {
+    var sources = Object.keys(tweet.video.source)
+      .map(function(type) {
+        return el('source', {
+          src: tweet.video.source[type],
+          type: type
+        });
+      })
+      .join('');
+    content.push(el('video', sources, {
+      controls: '',
+      poster: tweet.video.poster
+    }));
   }
 
   return content.join('');
