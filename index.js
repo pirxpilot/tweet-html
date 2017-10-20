@@ -1,12 +1,8 @@
 var ago = require('ago');
 var el = require('el');
+var uslice = require('unicode-substring');
 
 module.exports = tweet2html;
-
-function splice(str, start, end, replacement) {
-  return [str.slice(0, start), replacement, str.slice(end)].join('');
-}
-
 
 function formatDate(created_at) {
   // Date format: ddd MMM DD HH:mm:ss ZZ YYYY
@@ -14,14 +10,21 @@ function formatDate(created_at) {
 }
 
 function adjustText(tweet) {
+  var text = [];
+  var index = 0;
   tweet.textAdjustment
-  .sort(function(a, b) {
-    // sort in reversed order
-    return b.indices[0] - a.indices[0];
-  })
-  .forEach(function(adj) {
-    tweet.text = splice(tweet.text, adj.indices[0], adj.indices[1], adj.text);
-  });
+    .sort(function(a, b) {
+      return a.indices[0] - b.indices[0];
+    })
+    .forEach(function(adj) {
+      text.push(uslice(tweet.text, index, adj.indices[0]));
+      text.push(adj.text);
+      index = adj.indices[1];
+    });
+  if (index > 0) {
+    text.push(uslice(tweet.text, index));
+    tweet.text = text.join('');
+  }
   delete tweet.textAdjustment;
 }
 
