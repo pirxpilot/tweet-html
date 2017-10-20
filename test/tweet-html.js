@@ -151,4 +151,24 @@ describe('tweet2html', function() {
     var data = require('./extended.json');
     assert.equal(tweet2html(data, 'Furkot', opts), html);
   });
+
+  it('should parse tweet with astral plane Unicode characters', function() {
+    var html = [
+      '<a href="https://twitter.com/Furkot/status/919977363235991552" target="_blank" class="date">',
+        '3 days ago',
+      '</a>',
+      '<div class="text">',
+        'The Big 5 is the best deal of the year! Save 20% on a 5 day lift ticket. ',
+        'Buy online today, quantities limited. ',
+        '<img class="emoji" draggable="false" alt="⛷️" src="https://twemoji.maxcdn.com/2/svg/26f7.svg"/>',
+        '<img class="emoji" draggable="false" alt="🏂" src="https://twemoji.maxcdn.com/2/svg/1f3c2.svg"/> ',
+        '<a href="http://bit.ly/2zs8Ayl" target="_blank">bit.ly/2zs8Ayl</a> ',
+      '</div>',
+      '<a href="https://twitter.com/bigskyresort/status/919977363235991552/video/1" target="_blank" class="photo">',
+        '<img src="https://pbs.twimg.com/ext_tw_video_thumb/919976809772367872/pu/img/dad49vapKqgZHzWv.jpg">',
+      '</a>'
+    ].join('');
+    var data = require('./emojis.json');
+    assert.equal(tweet2html(data, 'Furkot', opts), html);
+  });
 });

@@ -22,12 +22,14 @@
   "license": "MIT",
   "readmeFilename": "Readme.md",
   "devDependencies": {
-    "browserify": "^12.0.1",
+    "browserify": "~14",
     "jshint": "~2",
-    "mochify": "^2.14.1"
+    "mochify": "~3"
   },
   "dependencies": {
     "el-component": "^1.0.0",
+    "twemoji": "^2.5.0",
+    "unicode-substring": "^1.0.0",
     "yields-ago": "~0"
   },
   "browser": {
