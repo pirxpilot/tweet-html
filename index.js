@@ -1,12 +1,20 @@
 var ago = require('ago');
 var el = require('el');
 var uslice = require('unicode-substring');
+var twemoji = require('twemoji');
 
 module.exports = tweet2html;
 
 function formatDate(created_at) {
   // Date format: ddd MMM DD HH:mm:ss ZZ YYYY
   return ago(new Date(created_at));
+}
+
+function tparse(str) {
+  return twemoji.parse(str, {
+    folder: 'svg',
+    ext: '.svg'
+  });
 }
 
 function adjustText(tweet) {
@@ -17,13 +25,15 @@ function adjustText(tweet) {
       return a.indices[0] - b.indices[0];
     })
     .forEach(function(adj) {
-      text.push(uslice(tweet.text, index, adj.indices[0]));
+      text.push(tparse(uslice(tweet.text, index, adj.indices[0])));
       text.push(adj.text);
       index = adj.indices[1];
     });
   if (index > 0) {
-    text.push(uslice(tweet.text, index));
+    text.push(tparse(uslice(tweet.text, index)));
     tweet.text = text.join('');
+  } else {
+    tweet.text = tparse(tweet.text);
   }
   delete tweet.textAdjustment;
 }
