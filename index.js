@@ -1,5 +1,5 @@
-var ago = require('ago');
-var el = require('el');
+var ago = require('yields-ago');
+var el = require('el-component');
 var uslice = require('unicode-substring');
 var twemoji = require('twemoji');
 
