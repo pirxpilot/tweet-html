@@ -22,7 +22,7 @@ node_modules: package.json
 	npm install
 
 test: | node_modules
-	$(NODE_BIN)/mochify
+	$(NODE_BIN)/mocha
 
 clean:
 	rm -fr build

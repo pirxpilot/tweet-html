@@ -1,9 +1,0 @@
-.jshintrc
-.travis.yml
-build
-component.json
-components
-example
-Makefile
-test
-example.html

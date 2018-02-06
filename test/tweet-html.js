@@ -1,6 +1,6 @@
 var tweet2html = require('..');
 
-/* global describe, it */
+/* global describe, it, before, after */
 
 var assert = require('assert');
 
@@ -9,6 +9,13 @@ var opts = {
 };
 
 describe('tweet2html', function() {
+  before(function () {
+    this.jsdom = require('jsdom-global')();
+  });
+
+  after(function () {
+    this.jsdom();
+  });
 
   it('should parse urls and hashtags', function() {
     var html = [
