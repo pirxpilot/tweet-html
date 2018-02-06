@@ -31,9 +31,5 @@
     "twemoji": "^2.5.0",
     "unicode-substring": "^1.0.0",
     "yields-ago": "~0"
-  },
-  "browser": {
-    "ago": "yields-ago",
-    "el": "el-component"
   }
 }
