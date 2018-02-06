@@ -35,6 +35,6 @@
     "yields-ago": "~0"
   },
   "files": [
-    "index,js"
+    "index.js"
   ]
 }
