@@ -1,4 +1,9 @@
 
+1.3.2 / 2018-02-06
+==================
+
+ * switch from ago to yields-ago and from el to el-component
+
 1.3.1 / 2017-10-20
 ==================
 
