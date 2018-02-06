@@ -197,4 +197,25 @@ describe('tweet2html', function() {
     var data = require('./video.json');
     assert.equal(tweet2html(data, 'bigskyresort', opts), html);
   });
+
+  it('should extended compatibility stream events', function() {
+    var html = [
+      '<a href="https://twitter.com/PUBG_help/status/960897321608339456" target="_blank" class="date">',
+        '3 days ago',
+      '</a>',
+      '<div class="text">',
+        '<a href="https://twitter.com/intent/user?user_id=948192552" target="_blank">',
+          '@Alejandro LeGnØ',
+        '</a>',
+        ' If you suspect a player of cheating please report them in game and to our support page if you have additional evidence such as video. -D',
+        '\n',
+        '\n',
+        '<a href="https://pubgsupport.zendesk.com/hc/en-us" target="_blank">',
+        'pubgsupport.zendesk.com/hc/en-us',
+        '</a>',
+      '</div>'
+    ].join('');
+    var data = require('./extended_stream.json');
+    assert.equal(tweet2html(data, 'PUBG_help', opts), html);
+  });
 });
