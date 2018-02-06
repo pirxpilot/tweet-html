@@ -203,12 +203,22 @@ function handleExtendedEntities(tweet) {
   delete tweet.extended_entities;
 }
 
+function handleExtendedCompatibilityEntities(tweet) {
+  if (!tweet.extended_tweet) {
+    return;
+  }
+
+  tweet.full_text = tweet.extended_tweet.full_text;
+  tweet.entities = tweet.extended_tweet.entities;
+}
+
 // interesting things about the tweet
 // item.created_at
 // item.text - tweet text
 // item.full_text - tweet text for an untruncated tweet
 // item.entities - hashtags, urls, user_mentions, media (type: photo)
 function parseTweet(tweet, username, opts) {
+  handleExtendedCompatibilityEntities(tweet);
   var parsed = {
     href: 'https://twitter.com/' + username + '/status/' + tweet.id_str,
     text: tweet.full_text || tweet.text,
