@@ -23,8 +23,10 @@
   "readmeFilename": "Readme.md",
   "devDependencies": {
     "browserify": "~14",
+    "jsdom": "~11",
+    "jsdom-global": "~3",
     "jshint": "~2",
-    "mochify": "~3"
+    "mocha": "~5"
   },
   "dependencies": {
     "el-component": "^1.0.0",
