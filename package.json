@@ -26,7 +26,8 @@
     "jsdom": "~11",
     "jsdom-global": "~3",
     "jshint": "~2",
-    "mocha": "~5"
+    "tap-dot": "~2",
+    "tape": "~5"
   },
   "dependencies": {
     "el-component": "^1.0.0",
