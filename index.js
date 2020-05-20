@@ -44,7 +44,7 @@ function createTextAdjustment(opt) {
     text: ''
   };
   if (opt.text && opt.href) {
-    ta.text = el('a', opt.text, { href: opt.href, target: "_blank" });
+    ta.text = el('a', opt.text, { href: opt.href, target: '_blank', rel: 'noopener' });
   }
   return ta;
 }
@@ -236,12 +236,12 @@ function parseTweet(tweet, username, opts) {
 
 function htmlTweet(tweet) {
   var content = [
-    el('a.date', tweet.date, { href: tweet.href, target: '_blank' }),
+    el('a.date', tweet.date, { href: tweet.href, target: '_blank', rel: 'noopener' }),
     el('.text', tweet.text)
   ];
   if (tweet.photo) {
     var img = el('img', { src: tweet.photo.src });
-    content.push(el('a.photo', img, { href: tweet.photo.url,  target: '_blank' }));
+    content.push(el('a.photo', img, { href: tweet.photo.url,  target: '_blank', rel: 'noopener' }));
   }
   if (tweet.iframe) {
     content.push(el('iframe', { src: tweet.iframe.src, 'class': tweet.iframe.service }));
