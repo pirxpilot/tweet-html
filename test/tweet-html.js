@@ -20,7 +20,7 @@ test('should parse urls and hashtags', function(t) {
     '</div>'
   ].join('');
 
-  var data = require('./hashtags.json');
+  var data = require('./fixtures/hashtags.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
 });
@@ -38,7 +38,7 @@ test('should parse user mentions', function(t) {
     '<a href="http://ow.ly/i/44H6o" target="_blank" rel="noopener">ow.ly/i/44H6o</a>',
     '</div>'
   ].join('');
-  var data = require('./mentions.json');
+  var data = require('./fixtures/mentions.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'Alta', opts), html);
 });
@@ -57,7 +57,7 @@ test('should parse photos', function(t) {
       '<img src="https://pbs.twimg.com/media/Bbxb5CuCAAAQ50E.jpg">',
     '</a>'
   ].join('');
-  var data = require('./photos.json');
+  var data = require('./fixtures/photos.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
 });
@@ -71,7 +71,7 @@ test('should parse vine', function(t) {
     '</div>',
     '<iframe src="//vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
   ].join('');
-  var data = require('./vine.json');
+  var data = require('./fixtures/vine.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
 });
@@ -85,7 +85,7 @@ test('should parse youtube videos', function(t) {
     '</div>',
     '<iframe src="//www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
   ].join('');
-  var data = require('./youtube.json');
+  var data = require('./fixtures/youtube.json');
 
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'stratton', opts), html);
@@ -101,7 +101,7 @@ test('should parse youtube videos with extra params', function(t) {
     '</div>',
     '<iframe src="//www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
   ].join('');
-  var data = require('./youtube.json');
+  var data = require('./fixtures/youtube.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[1], 'stratton', opts), html);
 });
@@ -118,7 +118,7 @@ test('should parse vimeo videos', function(t) {
     '</div>',
     '<iframe src="//player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
   ].join('');
-  var data = require('./vimeo.json');
+  var data = require('./fixtures/vimeo.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'telluride', opts), html);
 });
@@ -136,7 +136,7 @@ test('should parse instagrams', function(t) {
       '<img src="http://instagr.am/p/iHpOpZjH3F/media/?size=m">',
     '</a>'
   ].join('');
-  var data = require('./instagram.json');
+  var data = require('./fixtures/instagram.json');
   t.plan(1);
   t.equal(tweet2html(data.tweets[0], 'KillingtonMtn', opts), html);
 });
@@ -154,7 +154,7 @@ test('should parse extended tweet format', function(t) {
       '<a href="https://help.furkot.com/how-to/import.html" target="_blank" rel="noopener">help.furkot.com/how-to/import.…</a>',
     '</div>'
   ].join('');
-  var data = require('./extended.json');
+  var data = require('./fixtures/extended.json');
   t.plan(1);
   t.equal(tweet2html(data, 'Furkot', opts), html);
 });
@@ -175,7 +175,7 @@ test('should parse tweet with astral plan Unicode characters', function(t) {
       '<img src="https://pbs.twimg.com/ext_tw_video_thumb/919976809772367872/pu/img/dad49vapKqgZHzWv.jpg">',
     '</a>'
   ].join('');
-  var data = require('./emojis.json');
+  var data = require('./fixtures/emojis.json');
   t.plan(1);
   t.equal(tweet2html(data, 'Furkot', opts), html);
 });
@@ -195,7 +195,7 @@ test('should parse native video', function(t) {
       '<source src="https://video.twimg.com/ext_tw_video/919976809772367872/pu/pl/6doXgOTC0BLrjddT.m3u8" type="application/x-mpegURL">',
     '</video>'
   ].join('');
-  var data = require('./video.json');
+  var data = require('./fixtures/video.json');
   t.plan(1);
   t.equal(tweet2html(data, 'bigskyresort', opts), html);
 });
@@ -217,7 +217,7 @@ test('should extended compatibility stream events', function(t) {
       '</a>',
     '</div>'
   ].join('');
-  var data = require('./extended_stream.json');
+  var data = require('./fixtures/extended_stream.json');
   t.plan(1);
   t.equal(tweet2html(data, 'PUBG_help', opts), html);
 });
