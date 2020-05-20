@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "el-component": "^1.0.0",
-    "twemoji": "^2.5.0",
+    "twemoji": "~13",
     "unicode-substring": "^1.0.0",
     "yields-ago": "~0"
   },
