@@ -22,7 +22,7 @@ node_modules: package.json
 	npm install
 
 test: | node_modules
-	$(NODE_BIN)/mocha
+	$(NODE_BIN)/tape test/*.js | $(NODE_BIN)/tap-dot
 
 clean:
 	rm -fr build

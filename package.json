@@ -22,15 +22,16 @@
   "license": "MIT",
   "readmeFilename": "Readme.md",
   "devDependencies": {
-    "browserify": "~14",
-    "jsdom": "~11",
+    "browserify": "~16",
+    "jsdom": "~16",
     "jsdom-global": "~3",
     "jshint": "~2",
-    "mocha": "~5"
+    "tap-dot": "~2",
+    "tape": "~5"
   },
   "dependencies": {
     "el-component": "^1.0.0",
-    "twemoji": "^2.5.0",
+    "twemoji": "~13",
     "unicode-substring": "^1.0.0",
     "yields-ago": "~0"
   },
