@@ -1,4 +1,11 @@
 
+1.5.0 / 2020-05-20
+==================
+
+ * add rel="noopner" to external links
+ * update tweemoji to ~13
+ * replace mocha with tape
+
 1.4.0 / 2018-02-06
 ==================
 
