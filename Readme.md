@@ -1,7 +1,7 @@
-[![Build Status](https://img.shields.io/travis/pirxpilot/tweet-html.svg)](http://travis-ci.org/pirxpilot/tweet-html)
-[![Dependency Status](https://img.shields.io/gemnasium/pirxpilot/tweet-html.svg)](https://gemnasium.com/pirxpilot/tweet-html)
-[![NPM version](https://img.shields.io/npm/v/tweet-html.svg)](http://badge.fury.io/js/tweet-html)
-# tweet-html
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
+[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
   reparse tweets returned by twitter API to HTML
 
@@ -20,9 +20,7 @@ Parse [tweet entities] contained in [tweet] object returned by one of the [Twitt
 - `tweet` - tweet object
 - `username` -
 - `opts` - _optional_ - at the moment only `formatDate` is supported; if not provided `created_at`
-  dates are formated with [Moment] `fromNow` function resulting in Dates displayed as _3 hours ago_
-  or _a year ago_
-
+  dates are formated to display _3 hours ago_ or _a year ago_
 
 In addition to usual suspects (user mentions, hashtags, urls) it also parses and embeds vine,
 instagram, youtube and vimeo links.
@@ -67,6 +65,18 @@ Check [tests](test/tweet-html.js) for more examples.
 
   MIT
 
-[tweet]: https://dev.twitter.com/docs/platform-objects/tweets
-[tweet entities]: https://dev.twitter.com/docs/entities
-[Moment]: http://momentjs.com/
+[tweet]: https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object
+[tweet entities]: https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
+[Twitter API]: https://developer.twitter.com/en/docs/api-reference-index
+
+[npm-image]: https://img.shields.io/npm/v/tweet-html.svg
+[npm-url]: https://npmjs.org/package/tweet-html
+
+[build-url]: https://travis-ci.org/pirxpilot/tweet-html
+[build-image]: https://img.shields.io/travis/pirxpilot/tweet-html.svg
+
+[deps-image]: https://img.shields.io/david/pirxpilot/tweet-html.svg
+[deps-url]: https://david-dm.org/pirxpilot/tweet-html
+
+[deps-dev-image]: https://img.shields.io/david/dev/pirxpilot/tweet-html.svg
+[deps-dev-url]: https://david-dm.org/pirxpilot/tweet-html?type=dev
