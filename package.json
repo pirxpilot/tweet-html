@@ -22,8 +22,8 @@
   "license": "MIT",
   "readmeFilename": "Readme.md",
   "devDependencies": {
-    "browserify": "~14",
-    "jsdom": "~11",
+    "browserify": "~16",
+    "jsdom": "~16",
     "jsdom-global": "~3",
     "jshint": "~2",
     "tap-dot": "~2",
