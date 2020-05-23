@@ -1,4 +1,11 @@
 
+1.5.1 / 2020-05-23
+==================
+
+ * replace tap-dot with tap-diff
+ * fix hashtag references in tweets
+ * ensure the resources are loaded through https
+
 1.5.0 / 2020-05-20
 ==================
 
