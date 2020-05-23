@@ -16,7 +16,7 @@ test('should parse urls and hashtags', function(t) {
     '<div class="text">',
       'The Gift of Life Marathon Blood Drive is gunning for the national record tomorrow - help out if you can! ',
       '<a href="http://giftoflifemarathon.com/" target="_blank" rel="noopener">giftoflifemarathon.com</a> ',
-      '<a href="https://twitter.com/search/%23vermont" target="_blank" rel="noopener">#vermont</a>',
+      '<a href="https://twitter.com/hashtag/vermont" target="_blank" rel="noopener">#vermont</a>',
     '</div>'
   ].join('');
 
@@ -113,8 +113,8 @@ test('should parse vimeo videos', function(t) {
     '</a>',
     '<div class="text">',
       'It\'s going to be a powder day for the Revelation Bowl opening tomorrow. ',
-      '<a href="https://twitter.com/search/%23Telluride" target="_blank" rel="noopener">#Telluride</a> ',
-      '<a href="https://twitter.com/search/%23PowderAlert" target="_blank" rel="noopener">#PowderAlert</a> ',
+      '<a href="https://twitter.com/hashtag/Telluride" target="_blank" rel="noopener">#Telluride</a> ',
+      '<a href="https://twitter.com/hashtag/PowderAlert" target="_blank" rel="noopener">#PowderAlert</a> ',
     '</div>',
     '<iframe src="https://player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
   ].join('');
@@ -129,7 +129,7 @@ test('should parse instagrams', function(t) {
       '3 days ago',
     '</a>',
     '<div class="text">',
-      '<a href="https://twitter.com/search/%23theBeast" target="_blank" rel="noopener">#theBeast</a> ',
+      '<a href="https://twitter.com/hashtag/theBeast" target="_blank" rel="noopener">#theBeast</a> ',
       'is open for exploration! ',
     '</div>',
     '<a href="http://instagram.com/p/iHpOpZjH3F/" target="_blank" rel="noopener" class="photo">',

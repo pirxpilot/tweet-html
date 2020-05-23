@@ -110,7 +110,7 @@ var entityParsers = {
   },
   hashtags: function(tag) {
     return {
-      href: 'https://twitter.com/search/%23' + tag.text,
+      href: 'https://twitter.com/hashtag/' + tag.text,
       text: '#' + tag.text,
       indices: tag.indices
     };
