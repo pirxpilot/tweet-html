@@ -110,7 +110,7 @@ var entityParsers = {
   },
   hashtags: function(tag) {
     return {
-      href: 'https://twitter.com/search/%23' + tag.text,
+      href: 'https://twitter.com/hashtag/' + tag.text,
       text: '#' + tag.text,
       indices: tag.indices
     };
@@ -136,25 +136,25 @@ var urlPreParsers = [
     type: 'photo',
     regex: /https?:\/\/(?:www\.)?instagram.com\/p\/([^\s\/]+)\/?/,
     toMediaUrl: function(match) {
-      return 'http://instagr.am/p/' + match[1] + '/media/?size=m';
+      return 'https://instagr.am/p/' + match[1] + '/media/?size=m';
     }
   }, {
     type: 'youtube',
     regex: /https?:\/\/(?:youtu.be\/|(?:m|www).youtube.com\/watch\?v=)([^\s&]+)/,
     toMediaUrl: function(match) {
-      return '//www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
+      return 'https://www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
     }
   }, {
     type: 'vimeo',
     regex: /https?:\/\/vimeo.com\/(\S+)$/,
     toMediaUrl: function(match) {
-      return '//player.vimeo.com/video/' + match[1];
+      return 'https://player.vimeo.com/video/' + match[1];
     }
  }, {
     type: 'vine',
     regex: /https?:\/\/vine.co\/v\/(\S+)$/,
     toMediaUrl: function(match) {
-      return '//vine.co/v/' + match[1] + '/embed/simple';
+      return 'https://vine.co/v/' + match[1] + '/embed/simple';
     }
   }
 ];

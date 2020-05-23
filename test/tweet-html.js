@@ -16,7 +16,7 @@ test('should parse urls and hashtags', function(t) {
     '<div class="text">',
       'The Gift of Life Marathon Blood Drive is gunning for the national record tomorrow - help out if you can! ',
       '<a href="http://giftoflifemarathon.com/" target="_blank" rel="noopener">giftoflifemarathon.com</a> ',
-      '<a href="https://twitter.com/search/%23vermont" target="_blank" rel="noopener">#vermont</a>',
+      '<a href="https://twitter.com/hashtag/vermont" target="_blank" rel="noopener">#vermont</a>',
     '</div>'
   ].join('');
 
@@ -69,7 +69,7 @@ test('should parse vine', function(t) {
     '</a>',
     '<div class="text">Look for the East Byrneside boarder cross course this weekend! ',
     '</div>',
-    '<iframe src="//vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
+    '<iframe src="https://vine.co/v/h0UBzVLzA5O/embed/simple" class="video vine"></iframe>'
   ].join('');
   var data = require('./fixtures/vine.json');
   t.plan(1);
@@ -83,7 +83,7 @@ test('should parse youtube videos', function(t) {
     '<div class="text">There\'s still time to have breakfast with santa this Sat or Sun',
     ' in the LDR from 10am - 2pm. 208-622-2800 for info. ',
     '</div>',
-    '<iframe src="//www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
+    '<iframe src="https://www.youtube.com/embed/j21KKhcf-5s?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
   ].join('');
   var data = require('./fixtures/youtube.json');
 
@@ -99,7 +99,7 @@ test('should parse youtube videos with extra params', function(t) {
     '<div class="text">',
     'Less Talk more STASH. The Stash opens this Saturday.\n',
     '</div>',
-    '<iframe src="//www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
+    '<iframe src="https://www.youtube.com/embed/Evv5DXz2HH4?autohide=1&modestbranding=1&rel=0&theme=light" class="video youtube"></iframe>'
   ].join('');
   var data = require('./fixtures/youtube.json');
   t.plan(1);
@@ -113,10 +113,10 @@ test('should parse vimeo videos', function(t) {
     '</a>',
     '<div class="text">',
       'It\'s going to be a powder day for the Revelation Bowl opening tomorrow. ',
-      '<a href="https://twitter.com/search/%23Telluride" target="_blank" rel="noopener">#Telluride</a> ',
-      '<a href="https://twitter.com/search/%23PowderAlert" target="_blank" rel="noopener">#PowderAlert</a> ',
+      '<a href="https://twitter.com/hashtag/Telluride" target="_blank" rel="noopener">#Telluride</a> ',
+      '<a href="https://twitter.com/hashtag/PowderAlert" target="_blank" rel="noopener">#PowderAlert</a> ',
     '</div>',
-    '<iframe src="//player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
+    '<iframe src="https://player.vimeo.com/video/58833057" class="video vimeo"></iframe>'
   ].join('');
   var data = require('./fixtures/vimeo.json');
   t.plan(1);
@@ -129,11 +129,11 @@ test('should parse instagrams', function(t) {
       '3 days ago',
     '</a>',
     '<div class="text">',
-      '<a href="https://twitter.com/search/%23theBeast" target="_blank" rel="noopener">#theBeast</a> ',
+      '<a href="https://twitter.com/hashtag/theBeast" target="_blank" rel="noopener">#theBeast</a> ',
       'is open for exploration! ',
     '</div>',
     '<a href="http://instagram.com/p/iHpOpZjH3F/" target="_blank" rel="noopener" class="photo">',
-      '<img src="http://instagr.am/p/iHpOpZjH3F/media/?size=m">',
+      '<img src="https://instagr.am/p/iHpOpZjH3F/media/?size=m">',
     '</a>'
   ].join('');
   var data = require('./fixtures/instagram.json');
