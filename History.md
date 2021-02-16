@@ -1,4 +1,10 @@
 
+2.0.0 / 2021-02-16
+==================
+
+ * always use latest version to twemoji
+ * rewrite in ES6
+
 1.5.1 / 2020-05-23
 ==================
 
