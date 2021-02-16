@@ -12,6 +12,7 @@ function formatDate(created_at) {
 
 function tparse(str) {
   return twemoji.parse(str, {
+    base: 'https://twemoji.maxcdn.com/v/latest/',
     folder: 'svg',
     ext: '.svg'
   });
