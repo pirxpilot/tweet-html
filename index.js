@@ -1,7 +1,7 @@
-var ago = require('yields-ago');
-var el = require('el-component');
-var uslice = require('unicode-substring');
-var twemoji = require('twemoji');
+const ago = require('yields-ago');
+const el = require('el-component');
+const uslice = require('unicode-substring');
+const twemoji = require('twemoji');
 
 module.exports = tweet2html;
 
@@ -12,19 +12,18 @@ function formatDate(created_at) {
 
 function tparse(str) {
   return twemoji.parse(str, {
+    base: 'https://twemoji.maxcdn.com/v/latest/',
     folder: 'svg',
     ext: '.svg'
   });
 }
 
 function adjustText(tweet) {
-  var text = [];
-  var index = 0;
+  const text = [];
+  let index = 0;
   tweet.textAdjustment
-    .sort(function(a, b) {
-      return a.indices[0] - b.indices[0];
-    })
-    .forEach(function(adj) {
+    .sort((a, b) => a.indices[0] - b.indices[0])
+    .forEach(adj => {
       text.push(tparse(uslice(tweet.text, index, adj.indices[0])));
       text.push(adj.text);
       index = adj.indices[1];
@@ -38,13 +37,13 @@ function adjustText(tweet) {
   delete tweet.textAdjustment;
 }
 
-function createTextAdjustment(opt) {
-  var ta = {
-    indices: opt.indices,
+function createTextAdjustment({indices, text, href}) {
+  const ta = {
+    indices,
     text: ''
   };
-  if (opt.text && opt.href) {
-    ta.text = el('a', opt.text, { href: opt.href, target: '_blank', rel: 'noopener' });
+  if (text && href) {
+    ta.text = el('a', text, { href, target: '_blank', rel: 'noopener' });
   }
   return ta;
 }
@@ -53,8 +52,9 @@ function parseEntityType(entities, parsed, type, convertFn) {
   if(!entities[type]) {
     return;
   }
-  entities[type].forEach(function(el) {
-    var opts, ta;
+  entities[type].forEach(el => {
+    let opts;
+    let ta;
     opts = convertFn(el);
     if (opts) {
       if (opts.photo) {
@@ -72,9 +72,9 @@ function parseEntityType(entities, parsed, type, convertFn) {
   });
 }
 
-var entityParsers = {
-  media: function(media) {
-    var data = {
+const entityParsers = {
+  media(media) {
+    let data = {
       indices: media.indices,
       text: ''
     };
@@ -90,7 +90,7 @@ var entityParsers = {
       case 'vine':
         data.iframe = {
           src: media.media_url_https,
-          service: 'video ' + media.type
+          service: `video ${media.type}`
         };
         break;
       case 'video':
@@ -99,63 +99,56 @@ var entityParsers = {
           poster: media.media_url_https,
           source: {}
         };
-        media.video_info.variants.forEach(function(variant) {
-          data.video.source[variant.content_type] = variant.url;
-        });
+        media.video_info.variants.forEach(
+          ({content_type, url}) => data.video.source[content_type] = url
+        );
         break;
       default:
         data = undefined;
     }
     return data;
   },
-  hashtags: function(tag) {
+  hashtags({text, indices}) {
     return {
-      href: 'https://twitter.com/hashtag/' + tag.text,
-      text: '#' + tag.text,
-      indices: tag.indices
+      href: `https://twitter.com/hashtag/${text}`,
+      text: `#${text}`,
+      indices
     };
   },
-  user_mentions: function(mention) {
+  user_mentions({id_str, name, indices}) {
     return {
-      href: 'https://twitter.com/intent/user?user_id=' + mention.id_str,
-      text: '@' + mention.name,
-      indices: mention.indices
+      href: `https://twitter.com/intent/user?user_id=${id_str}`,
+      text: `@${name}`,
+      indices
     };
   },
-  urls: function(url) {
+  urls({expanded_url, display_url, indices}) {
     return {
-      href: url.expanded_url,
-      text: url.display_url,
-      indices: url.indices
+      href: expanded_url,
+      text: display_url,
+      indices
     };
   }
 };
 
-var urlPreParsers = [
+const urlPreParsers = [
   {
     type: 'photo',
     regex: /https?:\/\/(?:www\.)?instagram.com\/p\/([^\s\/]+)\/?/,
-    toMediaUrl: function(match) {
-      return 'https://instagr.am/p/' + match[1] + '/media/?size=m';
-    }
+    toMediaUrl: match => `https://instagr.am/p/${match[1]}/media/?size=m`
   }, {
     type: 'youtube',
     regex: /https?:\/\/(?:youtu.be\/|(?:m|www).youtube.com\/watch\?v=)([^\s&]+)/,
-    toMediaUrl: function(match) {
-      return 'https://www.youtube.com/embed/' + match[1] + '?autohide=1&modestbranding=1&rel=0&theme=light';
-    }
+    toMediaUrl: match =>
+      `https://www.youtube.com/embed/${match[1]}?autohide=1&modestbranding=1&rel=0&theme=light`
   }, {
     type: 'vimeo',
     regex: /https?:\/\/vimeo.com\/(\S+)$/,
-    toMediaUrl: function(match) {
-      return 'https://player.vimeo.com/video/' + match[1];
-    }
+    toMediaUrl: match => `https://player.vimeo.com/video/${match[1]}`
  }, {
     type: 'vine',
     regex: /https?:\/\/vine.co\/v\/(\S+)$/,
-    toMediaUrl: function(match) {
-      return 'https://vine.co/v/' + match[1] + '/embed/simple';
-    }
+    toMediaUrl: match => `https://vine.co/v/${match[1]}/embed/simple`
   }
 ];
 
@@ -167,13 +160,13 @@ function preParseUrl(entities, preParser) {
     return;
   }
   entities.media = entities.media || [];
-  entities.urls = entities.urls.filter(function(url) {
-    var match = url.expanded_url.match(preParser.regex);
+  entities.urls = entities.urls.filter(({expanded_url, indices}) => {
+    const match = expanded_url.match(preParser.regex);
     if (match) {
       entities.media.push({
         type: preParser.type,
-        expanded_url: url.expanded_url,
-        indices: url.indices,
+        expanded_url,
+        indices,
         media_url_https: preParser.toMediaUrl(match)
       });
       return false;
@@ -183,23 +176,22 @@ function preParseUrl(entities, preParser) {
 }
 
 function handleExtendedEntities(tweet) {
-  if (!tweet.extended_entities) {
+  const { extended_entities, entities } = tweet;
+  if (!extended_entities) {
     return;
   }
-  if (!tweet.extended_entities.media) {
+  if (!extended_entities.media) {
     return;
   }
-  var id2emedia = {};
+  const id2emedia = {};
   // find all extended media that we can process
-  tweet.extended_entities.media.forEach(function(emedia) {
+  extended_entities.media.forEach(emedia => {
     if (emedia.type === 'video' || emedia.type == 'animated_gif') {
       id2emedia[emedia.id_str] = emedia;
     }
   });
   // replace legacy media with extended version
-  tweet.entities.media = tweet.entities.media.map(function(media) {
-    return id2emedia[media.id_str] || media;
-  });
+  entities.media = entities.media.map(media => id2emedia[media.id_str] || media);
   delete tweet.extended_entities;
 }
 
@@ -219,41 +211,36 @@ function handleExtendedCompatibilityEntities(tweet) {
 // item.entities - hashtags, urls, user_mentions, media (type: photo)
 function parseTweet(tweet, username, opts) {
   handleExtendedCompatibilityEntities(tweet);
-  var parsed = {
-    href: 'https://twitter.com/' + username + '/status/' + tweet.id_str,
+  const parsed = {
+    href: `https://twitter.com/${username}/status/${tweet.id_str}`,
     text: tweet.full_text || tweet.text,
     date: opts.formatDate(tweet.created_at),
     textAdjustment: []
   };
   handleExtendedEntities(tweet);
   urlPreParsers.forEach(preParseUrl.bind(null, tweet.entities));
-  Object.keys(entityParsers).forEach(function(type) {
-    parseEntityType(tweet.entities, parsed, type, entityParsers[type]);
-  });
+  Object.entries(entityParsers).forEach(
+    ([ type, parser ]) => parseEntityType(tweet.entities, parsed, type, parser)
+  );
   adjustText(parsed);
   return parsed;
 }
 
 function htmlTweet(tweet) {
-  var content = [
+  const content = [
     el('a.date', tweet.date, { href: tweet.href, target: '_blank', rel: 'noopener' }),
     el('.text', tweet.text)
   ];
   if (tweet.photo) {
-    var img = el('img', { src: tweet.photo.src });
+    const img = el('img', { src: tweet.photo.src });
     content.push(el('a.photo', img, { href: tweet.photo.url,  target: '_blank', rel: 'noopener' }));
   }
   if (tweet.iframe) {
     content.push(el('iframe', { src: tweet.iframe.src, 'class': tweet.iframe.service }));
   }
   if (tweet.video) {
-    var sources = Object.keys(tweet.video.source)
-      .map(function(type) {
-        return el('source', {
-          src: tweet.video.source[type],
-          type: type
-        });
-      })
+    const sources = Object.entries(tweet.video.source)
+      .map(([type, src]) => el('source', { src, type }))
       .join('');
     content.push(el('video', sources, {
       controls: '',
@@ -264,11 +251,6 @@ function htmlTweet(tweet) {
   return content.join('');
 }
 
-
-function tweet2html(tweet, username, opts) {
-  opts = opts || {
-    formatDate: formatDate
-  };
+function tweet2html(tweet, username, opts = { formatDate }) {
   return htmlTweet(parseTweet(tweet, username, opts));
 }
-
