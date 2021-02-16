@@ -1,7 +1,7 @@
 const ago = require('yields-ago');
 const el = require('el-component');
 const uslice = require('unicode-substring');
-const twemoji = require('twemoji');
+const twemoji = require('twemoji-parser');
 
 module.exports = tweet2html;
 
@@ -10,12 +10,12 @@ function formatDate(created_at) {
   return ago(new Date(created_at));
 }
 
-function tparse(str) {
-  return twemoji.parse(str, {
-    base: 'https://twemoji.maxcdn.com/v/latest/',
-    folder: 'svg',
-    ext: '.svg'
-  });
+function addEmojiEntities(text, tweet) {
+  const entities = twemoji.parse(text, { assetType: 'svg' });
+  if (entities.length > 0) {
+    tweet.entities = tweet.entities || {};
+    tweet.entities.emojis = entities;
+  }
 }
 
 function adjustText(tweet) {
@@ -24,15 +24,13 @@ function adjustText(tweet) {
   tweet.textAdjustment
     .sort((a, b) => a.indices[0] - b.indices[0])
     .forEach(adj => {
-      text.push(tparse(uslice(tweet.text, index, adj.indices[0])));
+      text.push(uslice(tweet.text, index, adj.indices[0]));
       text.push(adj.text);
       index = adj.indices[1];
     });
   if (index > 0) {
-    text.push(tparse(uslice(tweet.text, index)));
+    text.push(uslice(tweet.text, index));
     tweet.text = text.join('');
-  } else {
-    tweet.text = tparse(tweet.text);
   }
   delete tweet.textAdjustment;
 }
@@ -40,7 +38,7 @@ function adjustText(tweet) {
 function createTextAdjustment({indices, text, href}) {
   const ta = {
     indices,
-    text: ''
+    text
   };
   if (text && href) {
     ta.text = el('a', text, { href, target: '_blank', rel: 'noopener' });
@@ -53,9 +51,7 @@ function parseEntityType(entities, parsed, type, convertFn) {
     return;
   }
   entities[type].forEach(el => {
-    let opts;
-    let ta;
-    opts = convertFn(el);
+    const opts = convertFn(el);
     if (opts) {
       if (opts.photo) {
         parsed.photo = opts.photo;
@@ -66,7 +62,7 @@ function parseEntityType(entities, parsed, type, convertFn) {
       if (opts.video) {
         parsed.video = opts.video;
       }
-      ta = createTextAdjustment(opts);
+      const ta = createTextAdjustment(opts);
       parsed.textAdjustment.push(ta);
     }
   });
@@ -108,27 +104,30 @@ const entityParsers = {
     }
     return data;
   },
-  hashtags({text, indices}) {
-    return {
-      href: `https://twitter.com/hashtag/${text}`,
-      text: `#${text}`,
-      indices
-    };
-  },
-  user_mentions({id_str, name, indices}) {
-    return {
-      href: `https://twitter.com/intent/user?user_id=${id_str}`,
-      text: `@${name}`,
-      indices
-    };
-  },
-  urls({expanded_url, display_url, indices}) {
-    return {
-      href: expanded_url,
-      text: display_url,
-      indices
-    };
-  }
+  hashtags: ({text, indices}) => ({
+    href: `https://twitter.com/hashtag/${text}`,
+    text: `#${text}`,
+    indices
+  }),
+  user_mentions: ({id_str, name, indices}) => ({
+    href: `https://twitter.com/intent/user?user_id=${id_str}`,
+    text: `@${name}`,
+    indices
+  }),
+  urls: ({expanded_url, display_url, indices}) => ({
+    href: expanded_url,
+    text: display_url,
+    indices
+  }),
+  emojis: ({url, indices, text}) => ({
+    text: el('img', {
+      'class': 'emoji',
+      draggable: false,
+      alt: text,
+      src: url
+    }),
+    indices
+  })
 };
 
 const urlPreParsers = [
@@ -218,6 +217,7 @@ function parseTweet(tweet, username, opts) {
     textAdjustment: []
   };
   handleExtendedEntities(tweet);
+  addEmojiEntities(parsed.text, tweet);
   urlPreParsers.forEach(preParseUrl.bind(null, tweet.entities));
   Object.entries(entityParsers).forEach(
     ([ type, parser ]) => parseEntityType(tweet.entities, parsed, type, parser)
