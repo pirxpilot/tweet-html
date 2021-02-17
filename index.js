@@ -10,26 +10,38 @@ function formatDate(created_at) {
   return ago(new Date(created_at));
 }
 
-function addEmojiEntities(text, tweet) {
-  const entities = twemoji.parse(text, { assetType: 'svg' });
+function handleEmojis(tweet) {
+  const entities = twemoji.parse(tweet.text, { assetType: 'svg' });
   if (entities.length > 0) {
-    tweet.entities = tweet.entities || {};
-    tweet.entities.emojis = entities;
+    tweet.textAdjustment = entities.map(({ url, indices, text }) => ({
+      text: el('img', {
+        'class': 'emoji',
+        draggable: false,
+        alt: text,
+        src: url
+      }),
+      indices
+    }));
+    adjustText(tweet, slice);
+  }
+
+  function slice(str, ...rest) {
+    return str.slice(...rest);
   }
 }
 
-function adjustText(tweet) {
+function adjustText(tweet, slice = uslice) {
   const text = [];
   let index = 0;
   tweet.textAdjustment
     .sort((a, b) => a.indices[0] - b.indices[0])
     .forEach(adj => {
-      text.push(uslice(tweet.text, index, adj.indices[0]));
+      text.push(slice(tweet.text, index, adj.indices[0]));
       text.push(adj.text);
       index = adj.indices[1];
     });
   if (index > 0) {
-    text.push(uslice(tweet.text, index));
+    text.push(slice(tweet.text, index));
     tweet.text = text.join('');
   }
   delete tweet.textAdjustment;
@@ -117,15 +129,6 @@ const entityParsers = {
   urls: ({expanded_url, display_url, indices}) => ({
     href: expanded_url,
     text: display_url,
-    indices
-  }),
-  emojis: ({url, indices, text}) => ({
-    text: el('img', {
-      'class': 'emoji',
-      draggable: false,
-      alt: text,
-      src: url
-    }),
     indices
   })
 };
@@ -217,14 +220,14 @@ function parseTweet(tweet, username, opts) {
     textAdjustment: []
   };
   handleExtendedEntities(tweet);
-  if (opts.emojis2images) {
-    addEmojiEntities(parsed.text, tweet);
-  }
   urlPreParsers.forEach(preParseUrl.bind(null, tweet.entities));
   Object.entries(entityParsers).forEach(
     ([ type, parser ]) => parseEntityType(tweet.entities, parsed, type, parser)
   );
   adjustText(parsed);
+  if (opts.emojis2images) {
+    handleEmojis(parsed);
+  }
   return parsed;
 }
 

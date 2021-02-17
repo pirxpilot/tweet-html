@@ -188,6 +188,7 @@ test('should replace emojis with svg', function (t) {
     'Buy online today, quantities limited. ',
     '<img class="emoji" draggable="false" alt="⛷️" src="https://twemoji.maxcdn.com/v/latest/svg/26f7.svg">',
     '<img class="emoji" draggable="false" alt="🏂" src="https://twemoji.maxcdn.com/v/latest/svg/1f3c2.svg">',
+    ' ',
     '<a href="http://bit.ly/2zs8Ayl" target="_blank" rel="noopener">bit.ly/2zs8Ayl</a> ',
     '</div>',
     '<a href="https://twitter.com/bigskyresort/status/919977363235991552/video/1" target="_blank" rel="noopener" class="photo">',
