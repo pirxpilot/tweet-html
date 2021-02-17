@@ -1,4 +1,10 @@
 
+2.1.0 / 2021-02-17
+==================
+
+ * fix emoji replacement
+ * add `emojis2images` option - use it if you need emoji replaced with SVGs
+
 2.0.1 / 2021-02-16
 ==================
 
