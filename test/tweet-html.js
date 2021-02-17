@@ -166,9 +166,7 @@ test('should parse tweet with astral plan Unicode characters', function(t) {
     '</a>',
     '<div class="text">',
       'The Big 5 is the best deal of the year! Save 20% on a 5 day lift ticket. ',
-      'Buy online today, quantities limited. ',
-      '<img class="emoji" draggable="false" alt="⛷️" src="https://twemoji.maxcdn.com/v/latest/svg/26f7.svg">',
-      '<img class="emoji" draggable="false" alt="🏂" src="https://twemoji.maxcdn.com/v/latest/svg/1f3c2.svg">',
+      'Buy online today, quantities limited. ⛷️🏂 ',
       '<a href="http://bit.ly/2zs8Ayl" target="_blank" rel="noopener">bit.ly/2zs8Ayl</a> ',
     '</div>',
     '<a href="https://twitter.com/bigskyresort/status/919977363235991552/video/1" target="_blank" rel="noopener" class="photo">',
@@ -178,6 +176,27 @@ test('should parse tweet with astral plan Unicode characters', function(t) {
   var data = require('./fixtures/emojis.json');
   t.plan(1);
   t.equal(tweet2html(data, 'Furkot', opts), html);
+});
+
+test('should replace emojis with svg', function (t) {
+  var html = [
+    '<a href="https://twitter.com/Furkot/status/919977363235991552" target="_blank" rel="noopener" class="date">',
+    '3 days ago',
+    '</a>',
+    '<div class="text">',
+    'The Big 5 is the best deal of the year! Save 20% on a 5 day lift ticket. ',
+    'Buy online today, quantities limited. ',
+    '<img class="emoji" draggable="false" alt="⛷️" src="https://twemoji.maxcdn.com/v/latest/svg/26f7.svg">',
+    '<img class="emoji" draggable="false" alt="🏂" src="https://twemoji.maxcdn.com/v/latest/svg/1f3c2.svg">',
+    '<a href="http://bit.ly/2zs8Ayl" target="_blank" rel="noopener">bit.ly/2zs8Ayl</a> ',
+    '</div>',
+    '<a href="https://twitter.com/bigskyresort/status/919977363235991552/video/1" target="_blank" rel="noopener" class="photo">',
+    '<img src="https://pbs.twimg.com/ext_tw_video_thumb/919976809772367872/pu/img/dad49vapKqgZHzWv.jpg">',
+    '</a>'
+  ].join('');
+  var data = require('./fixtures/emojis.json');
+  t.plan(1);
+  t.equal(tweet2html(data, 'Furkot', { emojis2images: true, formatDate: opts.formatDate }), html);
 });
 
 test('should parse native video', function(t) {

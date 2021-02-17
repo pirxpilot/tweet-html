@@ -217,7 +217,9 @@ function parseTweet(tweet, username, opts) {
     textAdjustment: []
   };
   handleExtendedEntities(tweet);
-  addEmojiEntities(parsed.text, tweet);
+  if (opts.emojis2images) {
+    addEmojiEntities(parsed.text, tweet);
+  }
   urlPreParsers.forEach(preParseUrl.bind(null, tweet.entities));
   Object.entries(entityParsers).forEach(
     ([ type, parser ]) => parseEntityType(tweet.entities, parsed, type, parser)
