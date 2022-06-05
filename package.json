@@ -6,10 +6,7 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pirxpilot/tweet-html.git"
-  },
+  "repository": "pirxpilot/tweet-html",
   "keywords": [
     "twitter",
     "parser",

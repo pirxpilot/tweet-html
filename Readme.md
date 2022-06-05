@@ -1,7 +1,6 @@
 [![NPM version][npm-image]][npm-url]
 [![Build Status][build-image]][build-url]
 [![Dependency Status][deps-image]][deps-url]
-[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
   reparse tweets returned by twitter API to HTML
 
@@ -69,14 +68,12 @@ Check [tests](test/tweet-html.js) for more examples.
 [tweet entities]: https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/entities-object
 [Twitter API]: https://developer.twitter.com/en/docs/api-reference-index
 
-[npm-image]: https://img.shields.io/npm/v/tweet-html.svg
+[npm-image]: https://img.shields.io/npm/v/tweet-html
 [npm-url]: https://npmjs.org/package/tweet-html
 
-[build-url]: https://travis-ci.org/pirxpilot/tweet-html
-[build-image]: https://img.shields.io/travis/pirxpilot/tweet-html.svg
+[build-url]: https://github.com/pirxpilot/tweet-html/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/tweet-html/check
 
-[deps-image]: https://img.shields.io/david/pirxpilot/tweet-html.svg
-[deps-url]: https://david-dm.org/pirxpilot/tweet-html
+[deps-image]: https://img.shields.io/librariesio/release/npm/tweet-html
+[deps-url]: https://libraries.io/npm/tweet-html
 
-[deps-dev-image]: https://img.shields.io/david/dev/pirxpilot/tweet-html.svg
-[deps-dev-url]: https://david-dm.org/pirxpilot/tweet-html?type=dev
